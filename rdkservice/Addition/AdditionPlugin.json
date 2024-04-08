@@ -1,0 +1,13 @@
+{
+    "$schema": "https://raw.githubusercontent.com/rdkcentral/rdkservices/main/Tools/json_generator/schemas/plugin.schema.json",
+    "info": {
+      "title": "Addition Plugin",
+      "callsign": "org.rdk.Addition",
+      "locator": "libWPEFrameworkAddition.so",
+      "status": "production",
+      "description": "The `Addition` plugin controls user preference settings on a set-top device."
+    },
+    "interface": {
+      "$ref": "Addition.json#"
+    }
+}

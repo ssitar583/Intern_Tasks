@@ -1,0 +1,45 @@
+{
+  "$schema": "interface.schema.json",
+  "jsonrpc": "2.0",
+  "info": {
+    "title": "Demo API",
+    "class": "Demo",
+    "description": "Demo JSON-RPC interface"
+  },
+  "common": {
+    "$ref": "common.json"
+  },
+  "methods": {
+    
+    "setnumber": {
+      "summary": "Set value of number and return that",
+      "params":{
+        "type":"object",
+        "properties":
+        {
+          "num1":
+          {
+            "type":"number"
+          },
+          "num2":
+          {
+            "type":"number"
+          }
+        }
+      },
+      "result": {
+        "type":"boolean"
+      },
+      "errors": [
+      ]
+    },
+    "addtwonumbers": {
+      "summary": "Add two numbers and returns sum",
+      "result": {
+        "type":"number"
+      },
+      "errors": [
+      ]
+    }
+  }
+}

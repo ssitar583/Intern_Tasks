@@ -1,0 +1,22 @@
+{
+    "$schema": "https://raw.githubusercontent.com/rdkcentral/rdkservices/main/Tools/json_generator/schemas/interface.schema.json",
+    "jsonrpc": "2.0",
+    "info": {
+      "title": "GPlaybin API",
+      "class": "GPlaybin",
+      "description": "The `GPlaybin` plugin allows you to return a number response"
+    },
+    "common": {
+        "$ref": "../common/common.json"
+    },
+    "methods": {
+        "setnumber":{
+            "summary": "set a number and return the value",
+            "result": {
+                "$ref": "#/common/result"
+            }
+        }
+    }
+       
+}
+

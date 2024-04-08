@@ -1,0 +1,11 @@
+precondition = ["Platform"]
+autostart = "@PLUGIN_DEMO_AUTOSTART@"
+startuporder = "@PLUGIN_DEMO_STARTUPORDER@"
+configuration = JSON()
+
+rootobject = JSON()
+rootobject.add("mode", "@PLUGIN_DEMO_MODE@")
+configuration.add("root", rootobject)
+
+
+

@@ -1,0 +1,84 @@
+{
+    "$schema": "interface.schema.json",
+    "jsonrpc": "2.0",
+    "info": {
+      "title": "GPlaybin API",
+      "class": "GPlaybin",
+      "description": "GPlaybin JSON-RPC interface"
+    },
+    "common": {
+      "$ref": "common.json"
+    },
+    "methods": {
+      
+      "seturl": {
+        "summary": "Set playbin url",
+        "params":{
+          "type":"object",
+          "properties":
+          {
+            "url":
+            {
+              "type":"string"
+            }
+          }
+        },
+        "result": {
+          "type":"boolean"
+        },
+        "errors": [
+        ]
+      },
+      "play": {
+        "summary": "setting pipeline to playing state",
+        "result": {
+          "type":"boolean"
+        },
+        "errors": [
+        ]
+      },
+      "pause": {
+        "summary": "setting pipeline to pause state",
+        "result": {
+          "type":"boolean"
+        },
+        "errors": [
+        ]
+      },
+      "ready": {
+        "summary": "setting pipeline to ready state",
+        "result": {
+          "type":"boolean"
+        },
+        "errors": [
+        ]
+      },
+      "stop": {
+        "summary": "setting pipeline to null state",
+        "result": {
+          "type":"boolean"
+        },
+        "errors": [
+        ]
+      },
+      "playbackspeed": {
+        "summary": "Set playbackspeed",
+        "params":{
+          "type":"object",
+          "properties":
+          {
+            "input":
+            {
+              "type":"string"
+            }
+          }
+        },
+        "result": {
+          "type":"boolean"
+        },
+        "errors": [
+        ]
+      }
+    }
+  }
+  

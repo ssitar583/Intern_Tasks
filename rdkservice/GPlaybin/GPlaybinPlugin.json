@@ -1,0 +1,13 @@
+{
+    "$schema": "https://raw.githubusercontent.com/rdkcentral/rdkservices/main/Tools/json_generator/schemas/plugin.schema.json",
+    "info": {
+      "title": "GPlaybin Plugin",
+      "callsign": "GPlaybin",
+      "locator": "libWPEFrameworkGPlaybin.so",
+      "status": "production",
+      "description": "The 'GPLaybin' plugin plays a video using playbin"
+    },
+    "interface": {
+      "$ref": "GPlaybin.json#"
+    }
+  }
