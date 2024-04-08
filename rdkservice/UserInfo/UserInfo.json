@@ -1,0 +1,44 @@
+{
+    "$schema": "https://raw.githubusercontent.com/rdkcentral/rdkservices/main/Tools/json_generator/schemas/interface.schema.json",
+    "jsonrpc": "2.0",
+    "info": {
+        "title": "UserInfo API", 
+        "class": "UserInfo",
+        "description": "The `UserInfo` plugin is used to set and get username."
+    },
+    "common": {
+        "$ref": "../common/common.json"
+    },
+    "definitions": {
+        "username":{
+            "summary": "The username is written to the `/opt/user_info.conf` file on the device.",
+            "type": "string",
+            "example": "Tony"
+        }
+    },
+    "methods": {
+        "getUserName":{
+            "summary": "Gets the username",
+            "result": {
+                "$ref": "#/common/result"
+            }
+        },
+        "setUserName":{
+            "summary": "Sets the username",
+            "params": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "$ref": "#/definitions/username"
+                    }
+                },
+                "required": [
+                    "username"
+                ]
+            },
+            "result": {
+                "$ref": "#/common/result"
+            }
+        }
+    }
+}

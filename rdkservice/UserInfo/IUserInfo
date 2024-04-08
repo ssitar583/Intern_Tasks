@@ -1,0 +1,41 @@
+{
+    "$schema": "interface.schema.json",
+    "jsonrpc": "2.0",
+    "info": {
+      "title": "UserInfo API",
+      "class": "UserInfo",
+      "description": "UserInfo JSON-RPC interface"
+    },
+    "common": {
+      "$ref": "common.json"
+    },
+    "methods": {
+      "setname": {
+        "summary": "Sets the user name",
+        "params":{
+          "type":"object",
+          "properties":
+          {
+            "name":
+            {
+              "type":"string"
+            }
+          }
+        },
+        "result": {
+          "type":"boolean"
+        },
+        "errors": [
+        ]
+      },
+      "getname": {
+        "summary": "gets the user name",
+        "result": {
+          "type":"string"
+        },
+        "errors": [
+        ]
+      }
+  
+    }
+  }

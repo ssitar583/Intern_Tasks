@@ -1,0 +1,8 @@
+autostart = "@PLUGIN_USERINFO_AUTOSTART@"
+
+configuration = JSON()
+
+rootobject = JSON()
+rootobject.add("mode", "@PLUGIN_USERINFO_MODE@")
+configuration.add("root", rootobject)
+
