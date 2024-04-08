@@ -1,0 +1,2 @@
+char* revString(char *b);
+
