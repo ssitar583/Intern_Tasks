@@ -1,0 +1,37 @@
+1.In any of the existing layer,create .bb file 
+
+2.In that recipe file, Specify metadata such as DESCRIPTION, LICENSE, and SRC_URI. This provides information about the software package. 
+
+ 
+
+3.Define the source directory where the source code will be unpacked and built. Use the ${WORKDIR} variable for this purpose. 
+
+ 
+
+4.List the dependencies required to build the software package. Use the DEPENDS variable to specify these dependencies. 
+
+ 
+
+5.Inherit classes that provide necessary functionality. For example, you might inherit the pkgconfig class for handling pkg-config related tasks. 
+
+ 
+
+6.Define the compilation procedure for the software package. Use the do_compile() function for this purpose. 
+
+ 
+
+7.Define the installation procedure for the software package. Use the do_install() function to specify how the compiled binary should be installed in the target filesystem. 
+
+ 
+
+8.Else,use inherit autotools,which will take care of the compilation and installation process. 
+
+ 
+
+9.In the Same path,create your .c file. 
+
+ 
+
+10.To make your recipe as part of complete image,add your recipe in rdepends in any of the dependency file of the target image. 
+
+ 

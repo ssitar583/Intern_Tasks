@@ -1,0 +1,49 @@
+1.Create a folder inside the build_folder/tmp/work/rdkservices/git folder. 
+
+2.Create plugin.config and plugin.conf.in configuration files,where set precondition,autostart,startuporder and callsign. 
+
+3.Create plugin.cpp and plugin.h file where implement the required logic. 
+
+4.Create CMakeLists.txt file and include target and required libraries. 
+
+5.Create Module.cpp,Module.h  and plugin.json files.Plugin.json contains the definition,summary,methods in your service. 
+
+6.Finally,add your plugin in the CMakeLists.txt of rdkservice. 
+
+7.Now,configure and compile the rdkservices using bitbake command. 
+
+8.Then,build the whole image and test the inprocess plugin through curl command. 
+
+9.If any further changes in the plugin,then changes can be made and configure and compile the rdkservice and mount bind the .so file.
+
+Curl Command: 
+
+Activate the plugin through controller 
+
+curl -d '{"jsonrpc":"2.0","id":"1","method":"Controller.1.activate","params":{"callsign":"org.rdk.Addition"}}' http://127.0.0.1:9998/jsonrpc 
+
+ 
+
+Get the Status of the plugin: 
+
+curl -d '{"jsonrpc":"2.0","id":"3","method": "Controller.1.status@Addition"}' http://127.0.0.1:9998/jsonrpc 
+
+ 
+
+Get and Set Api’s: 
+
+curl -d '{"jsonrpc":"2.0","id":"2","method":"org.rdk.Addition.1.gettwonumbers","params":{"callsign":"org.rdk.Addition","num1":"10","num2":"20"}}' http://127.0.0.1:9998/jsonrpc 
+
+ 
+
+curl -d '{"jsonrpc":"2.0","id":"2","method":"org.rdk.Addition.1.addtwonumbers","params":{"callsign":"org.rdk.Addition"}}' http://127.0.0.1:9998/jsonrpc 
+
+
+
+Event handling in inbound process 
+
+1.In client application, in any one of existing api or in new api, create security access token which is later user for subscription as well as query purpose. 
+
+2.Subscribe for the required event. 
+
+3.From the host application, send notification for all the applications, which is subscribed to the respective event ,using sendNotify() method.  

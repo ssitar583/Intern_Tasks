@@ -1,0 +1,10 @@
+
+GStreamer is an open-source multimedia framework that provides a pipeline-based system for handling various media processing tasks such as playback, recording, streaming, and editing.
+
+- It defines a structure `CustomData` to hold pipeline elements and playback speed.
+- `send_seek_event` function constructs and sends seek events to adjust playback position.
+- The `main` function initializes GStreamer, creates the pipeline, and sets up event handling.
+- `pad_handler` function links demuxer output pads to appropriate queue elements.
+- `handle_input` function manages user input from stdin, controlling pipeline state and speed.
+- The program plays a video file  with demuxing, decoding, and rendering for video and audio.
+- It uses GStreamer debug to generate Graphviz dot files for visualizing pipeline structure.

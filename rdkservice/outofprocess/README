@@ -1,0 +1,44 @@
+Outbound Process:
+1.Create a folder inside the build_folder/tmp/work/rdkservices/git folder. 
+
+2.Create plugin.config and plugin.conf.in configuration files,where set precondition,autostart,startuporder and callsign.Also set the mode for outofprocess plugin.This the one which makes a plugin as outofprocess. 
+
+3.Create IPlugin.h in wpeframework-interfaces/git/interfaces where you have to declare all the api’s that run  out of wpeframework and Plugin.json file in wpeframework-interfaces/git/interfaces folder,where you have to define all the api’s with its summary,parameter and result. 
+
+4. Also,Create PluginImplementation.h and PluginImplementation.cpp which contains the actual implementation of the logic. 
+
+5.Create plugin.cpp and plugin.h file where you can have some api’s that run inside the wpeframework.From there,call the api’s in pluginimplementation.cpp file by creating the connection with implementation file. 
+
+6.Create CMakeLists.txt file and include target and required libraries. 
+
+7.Create Module.cpp,Module.h  and plugin.json files.Plugin.json contains the definition,summary,methods in your service. 
+
+8.Finally,add your plugin in the CMakeLists.txt of rdkservice. 
+
+9.Now,configure and compile the wpeframework-interfaces and rdkservices using bitbake command. 
+
+10.Then,build the whole image and test the inprocess plugin through curl command. 
+
+11.If there are further changes in the plugin,then changes can be made and configure and compile the rdkservice and mount bind the .so file,where the changes will get reflected. 
+
+12.If there are changes in IPlugin.h file,then the whole image has to be build again for the changes to get reflected.
+
+Launching Outbound Process through RDKshell and manage key handling: 
+
+1.Create outbound process. 
+
+2.To make a plugin as RDKShell client,add the below line to config file. 
+
+configuration.add("clientidentifier", "wst-GPlaybin") 
+
+3.Also set the environment variable wayland-display. 
+
+4.Now,for key handling, In RDKShell component,key handling has been used with essos-instance file.Likewise,use essos in PluginImplementation.cpp file for key handling. 
+
+5.Key handling has been done through essos.Essoskeypressed and Essoskeyreleased are the api's which are declared inside the structure EssosKeylistener in essos-app.cpp file. 
+
+6.Further those api’s are assigned to the callback specific to the RDKShell.This Essoskeypressed and Essoskeyreleased API's of EssosKeylistener are registered through ESSOSSetKeyListener API with EssosContext. 
+
+7.Before registerning the keylistener,initialize the EssosContext.And to listen for key inputs continuously,use runeventlooponce api infinitely. 
+
+8.Additionally,add key handling in seperate thread to avoid blocking of plugin wpeprocess which is running in main thread.Add logs in  RDKShell component files to know the flow of key handling.  

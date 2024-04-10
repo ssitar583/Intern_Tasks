@@ -1,0 +1,1 @@
+A Makefile is a script used by the make build automation tool. It specifies how to compile and link a program or a set of programs. Makefiles typically contain a series of rules that define how to build the executable or libraries, dependencies between source files and headers, compiler options, and cleanup tasks.
