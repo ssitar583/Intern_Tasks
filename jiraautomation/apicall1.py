@@ -11,7 +11,6 @@ import re
 import pandas as pd
 import subprocess
 import os
-import shutil
 
 
 # Set the Jira base URL and API endpoint
@@ -43,9 +42,12 @@ for url in repository_urls:
     commit = input("Enter the last commit ID: ")
     repo_name = url.split('/')[-1]
     if os.path.exists(repository_directory):
-    	shutil.rmtree(repository_directory)
-    subprocess.run(['git', 'clone', '-b', branch, url, repository_directory])
-    os.chdir(repository_directory)
+        os.chdir(repository_directory)
+        subprocess.run(['git', 'pull', 'origin', branch])
+        subprocess.run(['git', 'fetch', '--all'])
+    else:
+        subprocess.run(['git', 'clone', '-b', branch, url, repository_directory])
+        os.chdir(repository_directory)
     git_log_file = f"../{repo_name}_git_log_output.txt"
     if os.path.exists(git_log_file):
         os.remove(git_log_file)
@@ -101,14 +103,14 @@ for url in repository_urls:
             if status_name is None or summary is None:
                 print(f"Error for ticket ID {ticket_id}: Status Name and Summary are missing")
             else:
-                print(f"Ticket ID: {ticket_id},Summary: {summary}, Email: {email}, Assignee: {assignee_name},Status Name: {status_name}")
+                print(f"Ticket ID: {ticket_id}, Status Name: {status_name}, Summary: {summary}, Assignee: {assignee_name}, Email: {email}")
             try:
                 existing_data = pd.read_excel(f"../{repo_name}.xlsx")
             except FileNotFoundError:
                 existing_data = pd.DataFrame()
 
             # Create a new DataFrame with the ticket ID and status name
-            new_data = pd.DataFrame({'Ticket ID': [ticket_id], 'Summary': [summary],'Email': [email], 'Assignee': [assignee_name],'Ticket Status': [status_name]})
+            new_data = pd.DataFrame({'Ticket ID': [ticket_id], 'Summary': [summary], 'Assignee': [assignee_name], 'Email': [email], 'Status Name': [status_name]})
 
             # Remove any existing rows with the same ticket ID from the existing data
             if 'Ticket ID' in existing_data.columns:
@@ -127,18 +129,23 @@ for url in repository_urls:
             print(f"Error for ticket ID {ticket_id}:", response.status_code)
 
 
+    print("HELLOHI") 
     os.chdir("../")        
     os.remove(f"{repo_name}_ticket_names.txt")
     os.remove(f"{repo_name}_git_log_output.txt")   
     excel_files = [file for file in os.listdir() if file == f"{repo_name}.xlsx"]
-    # Iterate over each Excel file
+    print("HELLO")
+     # Iterate over each Excel file
     for file in excel_files:
         # Read the Excel file into a DataFrame
         data = pd.read_excel(file)
                             
         # Append the data to the merged_data DataFrame
         merged_data = pd.concat([merged_data, data], ignore_index=True)
+        print("HI")
+        print(merged_data)
     
 # Write the merged data to a new Excel file
 merged_data.to_excel('merged_data.xlsx', index=False)
+print("welcome")
 
