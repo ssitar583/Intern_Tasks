@@ -1,6 +1,7 @@
 #Steps to run the script:
 
 #1. Create a Personal Access Token in Jira Profile(Profile->Personal Access Token) and replace the token in the line "Authorization": "Bearer ODE3MzI2NDY4OTgzOmNSYEOeQjx+OmvnOrrjqSzLGylu".Token is "ODE3MzI2NDY4OTgzOmNSYEOeQjx+OmvnOrrjqSzLGylu".You can refer the JIRA rest api's in https://docs.atlassian.com/software/jira/docs/api/REST/7.6.1/
+
 #2. Run the script and enter the branch name and last commit ID.
 
 #3. The script will clone the repositories and create a file with the ticket names
